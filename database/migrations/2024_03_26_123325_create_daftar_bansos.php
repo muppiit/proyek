@@ -11,14 +11,13 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('keluarga', function (Blueprint $table) {
+        Schema::create('daftar_bansos', function (Blueprint $table) {
             $table->id();
-            $table->string('nama_kepala_keluarga');
-            $table->string('nomor_nik');
-            $table->string('alamat');
-            $table->string('no_rumah');
-            $table->unsignedBigInteger('id_rt')->nullable();
-            $table->foreign('id_rt')->references('id')->on('rt')->onDelete('cascade');
+            $table->string('nama_bansos');
+            $table->text('deskripsi');
+            $table->date('tanggal_mulai');
+            $table->date('tanggal_selesai');
+            $table->text('keterangan_tambahan');
             $table->timestamps();
         });
     }
@@ -28,6 +27,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('keluarga');
+        Schema::dropIfExists('daftar_bansos');
     }
 };

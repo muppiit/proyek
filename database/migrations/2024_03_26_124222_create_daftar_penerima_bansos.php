@@ -11,12 +11,11 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('keuangan', function (Blueprint $table) {
+        Schema::create('daftar_penerima_bansos', function (Blueprint $table) {
             $table->id();
-            $table->date('tanggal_transaksi');
-            $table->decimal('jumlah', 10, 2);
-            $table->string('keterangan');
-            $table->enum('jenis', ['Pemasukan', 'Pengeluaran']);
+            $table->unsignedBigInteger('id_daftar_calon_penerima_bansos');
+            $table->foreign('id_daftar_calon_penerima_bansos')->references('id')->on('daftar_calon_penerima_bansos')->onDelete('cascade');
+            $table->text('keterangan_tambahan');
             $table->timestamps();
         });
     }
@@ -26,6 +25,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('keuangan');
+        Schema::dropIfExists('daftar_penerima_bansos');
     }
 };

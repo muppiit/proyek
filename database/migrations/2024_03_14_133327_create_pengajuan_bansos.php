@@ -17,6 +17,8 @@ return new class extends Migration
             $table->foreign('id_penduduk')->references('id')->on('penduduk')->onDelete('cascade');
             $table->unsignedBigInteger('id_rt');
             $table->foreign('id_rt')->references('id')->on('rt')->onDelete('cascade');
+            $table->decimal('pendapatan_1bln', 10, 2);
+            $table->string('sktm')->nullable();
             $table->string('status_pengajuan');
             $table->text('keterangan')->nullable();
             $table->timestamps();
